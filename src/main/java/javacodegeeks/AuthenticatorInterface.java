@@ -1,5 +1,7 @@
 package javacodegeeks;
 
+import sun.invoke.empty.Empty;
+
 /**
  * Created by Mateusz on 16.05.2017.
  */
@@ -15,5 +17,7 @@ public interface AuthenticatorInterface {
     are
      * empty.
      */
-    boolean authenticateUser(String name, String surname);
+    boolean authenticateUser(String name, String surname) throws EmptyCredentialException;
+
+    void foo();
 }

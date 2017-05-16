@@ -2,6 +2,7 @@ package javacodegeeks;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 import static junit.framework.TestCase.assertFalse;
@@ -51,8 +52,22 @@ public class AuthenticatorApplicationTest {
         String username = "JavaCodeGeeks";
         String password = "unsafePassword";
 
-        //when(authenticatorMock.authenticateUser(username,password)).thenReturn(false);
+        verify(authenticatorMock, never()).authenticateUser(username,password);
+    }
+
+
+    @Test
+    public void fooShouldBeCallAfterAuthenticate(){
+        String username = "JavaCodeGeeks";
+        String password = "unsafePassword";
 
         verify(authenticatorMock, never()).authenticateUser(username,password);
+
+        authenticator.authenticate(username,password);
+
+        InOrder inOrder = inOrder(authenticatorMock);
+
+        inOrder.verify(authenticatorMock).foo();
+        inOrder.verify(authenticatorMock).authenticateUser(username,password);
     }
 }

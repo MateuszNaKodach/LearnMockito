@@ -24,6 +24,7 @@ public class AuthenticatorApplication {
      */
     public boolean authenticate(String username, String password) {
         boolean authenticated;
+        authenticator.foo();
         authenticated = this.authenticator.authenticateUser(username, password);
         return authenticated;
     }
