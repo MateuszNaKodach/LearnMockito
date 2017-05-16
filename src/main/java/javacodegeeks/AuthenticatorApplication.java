@@ -22,7 +22,7 @@ public class AuthenticatorApplication {
      * @param password The password to authenticate the user.
      * @return True if the user has been authenticated; false if it has not.
      */
-    public boolean authenticate(String username, String password) {
+    public boolean authenticate(String username, String password) throws EmptyCredentialException {
         boolean authenticated;
         authenticator.foo();
         authenticated = this.authenticator.authenticateUser(username, password);
